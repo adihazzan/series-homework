@@ -1,3 +1,5 @@
+import { title } from "node:process";
+
 export const getDramas = series => series.filter(show => show.genre = "Drama");
 
 export const getEpisodeById = (season, idText) =>

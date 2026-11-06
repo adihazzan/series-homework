@@ -38,3 +38,37 @@ export const getCreatorsFrom = (series, country) =>
 //B5
 export const sortByStartYear = series =>
   [...series].sort((a, b) => a.startYear - b.startYear);
+//C1
+export const renameSeries = (series, id, newTitle) =>
+  series.map(show =>
+    show.id === id
+      ? { ...show, title: newTitle }
+      : show
+  );
+//C2
+export const addSeason = (series, showId, season) =>
+  series.map(show =>
+    show.id === showId
+      ? {
+          ...show,
+          seasons: [...show.seasons, season]
+        }
+      : show
+  );
+//C3
+export const addEpisode = (series, showId, seasonNumber, episode) =>
+  series.map(show =>
+    show.id === showId
+      ? {
+          ...show,
+          seasons: show.seasons.map(season =>
+            season.number === seasonNumber
+              ? {
+                  ...season,
+                  episodes: [...season.episodes, episode]
+                }
+              : season
+          )
+        }
+      : show
+  );
